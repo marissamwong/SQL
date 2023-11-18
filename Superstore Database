@@ -42,7 +42,7 @@ SELECT avg(price)
 FROM superstore
 WHERE category="Kitchen Supplies";
 
-#Show the amount of how many Smart LED TVs are in stock.
+#Show the amount of Smart LED TVs in stock.
 SELECT sum(stock_quantity)
 FROM superstore
 WHERE category="Smart LED TV";
