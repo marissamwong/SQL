@@ -31,18 +31,22 @@ VALUES
 #Use a SELECT statement to order the items by price.
 SELECT item_name, price
 FROM superstore
-ORDER BY price desc;
+ORDER BY price desc
+;
 
 #Show a statistic about the item prices.
 SELECT avg(price)
-FROM superstore;
+FROM superstore
+;
 
 #Show a statistic about the price for items in the category of "Kitchen Supplies."
 SELECT avg(price)
 FROM superstore
-WHERE category="Kitchen Supplies";
+WHERE category="Kitchen Supplies"
+;
 
 #Show the amount of Smart LED TVs in stock.
 SELECT sum(stock_quantity)
 FROM superstore
-WHERE category="Smart LED TV";
+WHERE category="Smart LED TV"
+;
