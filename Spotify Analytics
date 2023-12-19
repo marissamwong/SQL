@@ -1,0 +1,61 @@
+# For this project, I obtained Spotify data from Kaggle.
+# Then, I established a table to insert the Spotify data into.
+# Finally, I conducted analytics on the data utilizing SQL.
+
+# Creating the table:
+CREATE TABLE BIT_DB.Spotifydata (
+id integer PRIMARY KEY,
+artist_name varchar NOT NULL,
+track_name varchar NOT NULL,
+track_id varchar NOT NULL,
+popularity integer NOT NULL,
+danceability decimal(4,3) NOT NULL,
+energy decimal(4,3) NOT NULL,
+key integer NOT NULL,
+loudness decimal(5,3) NOT NULL,
+mode integer NOT NULL,
+speechiness decimal(5,4) NOT NULL,
+acousticness decimal(6,5) NOT NULL,
+instrumentalness text NOT NULL,
+liveness decimal(5,4) NOT NULL,
+valence decimal(4,3) NOT NULL,
+tempo decimal(6,3) NOT NULL,
+duration_ms integer NOT NULL,
+time_signature integer NOT NULL 
+)
+
+# Then, I inserted the Spotify Data .csv into the table.
+
+# Next, I explored the data using the following SQL.
+
+# First, I determined the average popularity, danceability, and energy by artist and track.
+SELECT 
+artist_name, 
+track_name,
+AVG (popularity),
+AVG (danceability),
+AVG (energy)
+FROM BIT_DB.Spotifydata
+GROUP BY artist_name, track_name; 
+
+# Then, I determined who the Top 15 artists are by popularity.
+SELECT artist_name, track_name, popularity
+FROM BIT_DB.Spotifydata
+ORDER BY popularity DESC
+LIMIT 15;
+
+# Next, I sought to determine whether there is correlation between a song's loudness and popularity. 
+SELECT track_name, artist_name, loudness, popularity
+FROM BIT_DB.Spotifydata
+ORDER BY loudness 
+AND popularity;
+
+# In addition, I determined the artist who released the longest song.
+SELECT MAX(duration_ms), track_name, artist_name
+FROM BIT_DB.Spotifydata
+ORDER BY duration_ms;
+
+# Finally, I determined the artist who released the shortest song.
+SELECT MIN(duration_ms), track_name, artist_name
+FROM BIT_DB.Spotifydata
+ORDER BY duration_ms;
